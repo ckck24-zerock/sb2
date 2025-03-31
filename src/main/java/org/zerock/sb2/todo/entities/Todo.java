@@ -8,7 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 //테이블 용도 
 //@Table 생략시에는 클래스 이름이 테이블 이름 
@@ -17,6 +19,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
+@Getter
 public class Todo {
 
   //모든 엔티티는 반드시 Id가 존재 
