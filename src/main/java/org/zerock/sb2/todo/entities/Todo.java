@@ -21,7 +21,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Getter
-public class Todo {
+public class Todo extends BaseEntity{
 
   //모든 엔티티는 반드시 Id가 존재 
   //PK는 반드시 객체타입(기본자료형 사용불가)

@@ -39,8 +39,6 @@ public class TodoRepoTests {
 
     repository.save(todo);
 
-    log.info("=========================");
-    log.info(todo.getTno());
 
   }
 
