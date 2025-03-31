@@ -39,6 +39,7 @@ public class TodoRepoTests {
 
     repository.save(todo);
 
+    log.info(todo.getTno());
 
   }
 
@@ -64,7 +65,7 @@ public class TodoRepoTests {
   @Commit
   public void testUpdate() {
 
-    java.util.Optional<Todo> result = repository.findById(2L);
+    java.util.Optional<Todo> result = repository.findById(1L);
 
     Todo todo = result.get();
 
@@ -89,6 +90,14 @@ public class TodoRepoTests {
 
   }
 
+  @Test
+  public void testQuery1() {
+
+    Pageable pageable = PageRequest.of(0, 10, Sort.by("tno").descending());
+
+    repository.listOfTitle("AAA", pageable);
+
+  }
 
 
 }
