@@ -1,5 +1,6 @@
 package org.zerock.sb2.todo;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +15,7 @@ public class TodoRepoTests {
   
   @Autowired(required = false)
   private TodoRepository repository;
+
 
   @Test
   public void testInsert(){
