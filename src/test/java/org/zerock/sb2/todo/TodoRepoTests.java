@@ -99,5 +99,12 @@ public class TodoRepoTests {
 
   }
 
+  @Test
+  public void testSelectDTO() {
+
+    log.info(repository.selectDTO(1L));
+
+  }
+
 
 }
