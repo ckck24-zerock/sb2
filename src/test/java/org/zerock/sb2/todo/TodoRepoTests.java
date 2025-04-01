@@ -33,6 +33,14 @@ public class TodoRepoTests {
   @Autowired
   private JPAQueryFactory queryFactory;
 
+  @Test
+  public void testSearch1() {
+
+    Pageable pageable = PageRequest.of(0,10);
+
+    repository.list1(pageable);
+
+  }
   
 
 
