@@ -39,7 +39,7 @@ public class BoardSearchImpl implements BoardSearch {
     JPQLQuery<BoardListDTO> dtoQuery = query.select(
       Projections.bean(
       BoardListDTO.class, 
-           board.bno, board.title,board.writer, board.viewCnt ));
+           board.bno, board.title,board.writer, board.regDate, board.viewCnt ));
 
     long count = dtoQuery.fetchCount();
     
