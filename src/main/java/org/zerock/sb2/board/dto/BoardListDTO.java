@@ -3,10 +3,8 @@ package org.zerock.sb2.board.dto;
 import java.time.LocalDateTime;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 public class BoardListDTO {
 
   private Long bno;
@@ -18,14 +16,5 @@ public class BoardListDTO {
   private LocalDateTime regDate;
   
   private int viewCnt;
-
-  public BoardListDTO(Long bno, String title, String writer, LocalDateTime regDate, int viewCnt) {
-    this.bno = bno;
-    this.title = title;
-    this.writer = writer;
-    this.regDate = regDate;
-    this.viewCnt = viewCnt;
-  }
-
   
 }
