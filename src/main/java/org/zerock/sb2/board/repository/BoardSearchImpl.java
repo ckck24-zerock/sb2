@@ -28,17 +28,25 @@ public class BoardSearchImpl implements BoardSearch {
 
     JPQLQuery<BoardEntity> query = queryFactory.selectFrom(board);
     query.where(board.bno.gt(0L));
+    query.where(board.delFlag.eq(false));
 
-    //검색 조건건
+    //검색 조건
 
     query.limit(pageRequestDTO.getLimit());
     query.offset(pageRequestDTO.getOffset());
     query.orderBy(new OrderSpecifier<>(Order.DESC, board.bno));
 
-    query.select(Projections.bean(
+    JPQLQuery<BoardListDTO> dtoQuery = query.select(
+      Projections.bean(
       BoardListDTO.class, 
-      board.bno, board.title,board.writer, board.viewCnt ));
+           board.bno, board.title,board.writer, board.viewCnt ));
 
+    long count = dtoQuery.fetchCount();
+    
+    java.util.List<BoardListDTO> dtoList = dtoQuery.fetch();
+    
+    log.info(dtoList);
+    log.info(count);
 
     return null;
   }
