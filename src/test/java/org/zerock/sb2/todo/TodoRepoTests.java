@@ -33,6 +33,9 @@ public class TodoRepoTests {
   @Autowired
   private JPAQueryFactory queryFactory;
 
+  
+
+
   @Test
   public void testQuery() {
 
@@ -43,8 +46,12 @@ public class TodoRepoTests {
     JPQLQuery<Todo> query = queryFactory.selectFrom(todo);
 
     query.where(todo.tno.gt(0L));
+    query.where(todo.title.like("AAA"));
 
     query.orderBy(new OrderSpecifier<>(Order.DESC, todo.tno));
+
+    query.limit(10);
+    query.offset(5);
     
     log.info(query);
 
