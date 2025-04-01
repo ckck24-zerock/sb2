@@ -31,7 +31,18 @@ public class BoardEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long bno;
 
-  
+  @Column(nullable = false, length = 500)
+  private String title;
+
+  @Column(nullable = false, length = 2000)
+  private String content;
+
+  @Column(nullable = false, length = 50)
+  private String writer;
+
+  private boolean delFlag;
+
+  private int viewCnt;
   
   @CreatedDate
   @Column(name = "regdate", updatable = false)
