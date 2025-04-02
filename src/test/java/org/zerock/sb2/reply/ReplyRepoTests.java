@@ -1,11 +1,13 @@
 package org.zerock.sb2.reply;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -64,6 +66,19 @@ public class ReplyRepoTests {
     Pageable pageable = PageRequest.of(0,10,Sort.by("rno").descending());
 
     repository.listOfBoard(bno, pageable);
+
+  }
+
+  @Test
+  public void testListOfBoard2() {
+
+    Long bno = 123L;
+
+    Pageable pageable = PageRequest.of(0,10,Sort.by("rno").descending());
+
+    Page<Object[]> result = repository.listOfBoard2(bno, pageable);
+
+    result.getContent().forEach(arr -> log.info(Arrays.toString(arr)));
 
   }
 
