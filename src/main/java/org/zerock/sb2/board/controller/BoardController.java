@@ -55,18 +55,17 @@ public class BoardController {
     if(bindingResult.hasErrors()){
       log.info("has errors..........");
 
+      
       bindingResult.getFieldErrors().forEach(fieldError -> {
         log.info("==========================");
         log.info("Field: " + fieldError.getField());  // 에러가 발생한 필드명
         log.info("Rejected Value: " + fieldError.getRejectedValue()); // 사용자가 입력한 잘못된 값
         log.info("Error Message: " + fieldError.getDefaultMessage()); // 에러 메시지
       });
+
     }
       
-      //rttr.addFlashAttribute("errors", bindingResult.getAllErrors());
-      
-      return "redirect:/board/register";
-    }
+
 
       
     return "redirect:/board/list";
