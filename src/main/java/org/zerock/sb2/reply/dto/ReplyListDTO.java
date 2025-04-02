@@ -3,8 +3,10 @@ package org.zerock.sb2.reply.dto;
 import java.time.LocalDateTime;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class ReplyListDTO {
 
   private Long rno;
@@ -20,7 +22,7 @@ public class ReplyListDTO {
 
   public ReplyListDTO(Long rno, String replyText, String replyer, Long bno, LocalDateTime regDate,
       LocalDateTime modDate) {
-        
+
     this.rno = rno;
     this.replyText = replyText;
     this.replyer = replyer;

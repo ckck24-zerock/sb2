@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.sb2.board.entities.BoardEntity;
+import org.zerock.sb2.reply.dto.ReplyListDTO;
 import org.zerock.sb2.reply.entities.ReplyEntity;
 import org.zerock.sb2.reply.repository.ReplyRepository;
 
@@ -79,6 +80,19 @@ public class ReplyRepoTests {
     Page<Object[]> result = repository.listOfBoard2(bno, pageable);
 
     result.getContent().forEach(arr -> log.info(Arrays.toString(arr)));
+
+  }
+
+  @Test
+  public void testListOfBoard3() {
+
+    Long bno = 123L;
+
+    Pageable pageable = PageRequest.of(0,10,Sort.by("rno").descending());
+
+    Page<ReplyListDTO> result = repository.listOfBoard3(bno, pageable);
+
+    result.getContent().forEach(dto  -> log.info(dto));
 
   }
 
