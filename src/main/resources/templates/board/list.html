@@ -39,8 +39,10 @@
         <div>
 
           <ul class="pagination">
-            <li class="page-item" th:if="${data.prev}">
-              <span class="page-link">Previous</span>
+            <li class="page-item" th:if="${data.prev}" th:with="linkUrl=@{/board/list(page=${data.start -1}, size=${requestDTO.size})}" >
+              <a class="page-link" th:href="${linkUrl + requestDTO.link}" >
+                Previous
+              </a>
             </li>
 
             <th:block th:each="num : ${#numbers.sequence(data.start,data.end)}">
@@ -50,8 +52,8 @@
               <a class="page-link" th:href="${linkUrl + requestDTO.link}" >[[${num} ]]</a></li>
             </th:block>
   
-            <li class="page-item" th:if="${data.next}">
-              <a class="page-link" href="#">Next</a>
+            <li class="page-item" th:if="${data.next}" th:with="linkUrl=@{/board/list(page=${data.end + 1}, size=${requestDTO.size})}" >
+              <a class="page-link" th:href="${linkUrl + requestDTO.link}" >Next</a>
             </li>
           </ul>
 
