@@ -20,20 +20,14 @@
               </tr>
           </thead>
           <tbody>
-              <tr>
-                  <td>1</td>
-                  <td>첫 번째 게시글</td>
+              <tr th:each="board : ${data.dtoList}">
+                  <td>[[ ${board.bno} ]]</td>
+                  <td>[[ ${board.title} ]] <b> [ [[ ${board.replyCnt} ]] ] </b> </td>
                   <td>홍길동</td>
                   <td>2024-04-02</td>
                   <td>120</td>
               </tr>
-              <tr>
-                  <td>2</td>
-                  <td>두 번째 게시글</td>
-                  <td>이몽룡</td>
-                  <td>2024-04-01</td>
-                  <td>85</td>
-              </tr>
+              
           </tbody>
       </table>
 
