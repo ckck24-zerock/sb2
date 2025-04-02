@@ -22,7 +22,11 @@
           <tbody>
               <tr th:each="board : ${data.dtoList}">
                   <td>[[ ${board.bno} ]]</td>
-                  <td>[[ ${board.title} ]] <b> [ [[ ${board.replyCnt} ]] ] </b> </td>
+                  <td>
+                    <a th:href="'/board/read/' + ${board.bno} + ${requestDTO.pageLink}">
+                      [[ ${board.title} ]] 
+                    </a>
+                    <b> [ [[ ${board.replyCnt} ]] ] </b> </td>
                   <td>홍길동</td>
                   <td>2024-04-02</td>
                   <td>120</td>
