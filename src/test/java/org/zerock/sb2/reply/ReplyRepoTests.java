@@ -4,7 +4,11 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.sb2.board.entities.BoardEntity;
 import org.zerock.sb2.reply.entities.ReplyEntity;
@@ -49,6 +53,17 @@ public class ReplyRepoTests {
     ReplyEntity reply = result.orElseThrow();
 
     log.info(reply);
+
+  }
+
+  @Test
+  public void testListOfBoard() {
+
+    Long bno = 123L;
+
+    Pageable pageable = PageRequest.of(0,10,Sort.by("rno").descending());
+
+    repository.listOfBoard(bno, pageable);
 
   }
 
