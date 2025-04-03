@@ -8,6 +8,7 @@ import org.zerock.sb2.reply.entities.ReplyEntity;
 
 import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.JPQLQueryFactory;
 
@@ -29,9 +30,21 @@ public class ReplySearchImpl implements ReplySearch{
 
     query.where(replyEntity.board.bno.eq(bno));
 
+    query.orderBy(new OrderSpecifier<>(Order.ASC, replyEntity.rno));
+    
     query.limit(requestDTO.getLimit());
     query.offset(requestDTO.getOffset());
-    query.orderBy(new OrderSpecifier<>(Order.ASC, replyEntity.rno));
+
+    JPQLQuery<ReplyListDTO> dtoQuery = query.select(Projections.bean(
+      ReplyListDTO.class, 
+        replyEntity.rno,
+        replyEntity.replyText,
+        replyEntity.replyer,
+        replyEntity.board.bno, 
+        replyEntity.regDate,
+        replyEntity.modDate
+      )
+    );
 
 
     return null;
