@@ -14,6 +14,7 @@ public class ReplyControllerAdvice {
     @ExceptionHandler(ReplyException.class)
     public ResponseEntity<Map<String,String>> handle(ReplyException ex){
 
-        return ResponseEntity.st
+        return ResponseEntity.status(ex.getCode())
+                .body(Map.of("msg", ex.getMessage()));
     }
 }
