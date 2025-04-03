@@ -24,7 +24,7 @@ public class ReplyController {
 
     private final ReplyService service;
 
-    @GetMapping("board/${bno}/list")
+    @GetMapping("board/{bno}/list")
     public ResponseEntity<PageResponseDTO<ReplyListDTO>> listOfBoard(
             @PathVariable("bno") Long bno, PageRequestDTO requestDTO) {
 
