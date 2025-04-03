@@ -51,6 +51,11 @@ public class ReplyServiceImpl implements ReplyService{
         PageResponseDTO<ReplyListDTO> responseDTO =
             replyRepository.listQuerydsl(bno, requestDTO);
 
+        //이런식으로도 처리할 수는 있다.
+        //        if(responseDTO.getDtoList() == null){
+        //            throw new ReplyException(404);
+        //        }
+
         return responseDTO;
 
     }
