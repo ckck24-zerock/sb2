@@ -46,8 +46,15 @@ public class ReplySearchImpl implements ReplySearch{
       )
     );
 
+    java.util.List<ReplyListDTO> dtoList = dtoQuery.fetch();
 
-    return null;
+    long total = dtoQuery.fetchCount();
+
+    return PageResponseDTO.<ReplyListDTO>withAll()
+    .dtoList(dtoList)
+    .total((int)total)
+    .pageRequestDTO(requestDTO)
+    .build();
   }
   
 }
