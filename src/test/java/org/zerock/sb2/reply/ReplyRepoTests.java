@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.sb2.board.entities.BoardEntity;
 import org.zerock.sb2.reply.dto.ReplyListDTO;
+import org.zerock.sb2.reply.dto.ReplyReadDTO;
 import org.zerock.sb2.reply.entities.ReplyEntity;
 import org.zerock.sb2.reply.repository.ReplyRepository;
 
@@ -95,6 +96,18 @@ public class ReplyRepoTests {
     result.getContent().forEach(dto  -> log.info(dto));
 
   }
+
+  @Test
+  public void testSelectOne() {
+
+    Long rno = 1L;
+
+    ReplyReadDTO dto =  repository.selectOne(rno);
+
+    log.info(dto);
+
+  }
+
 
 
 }
