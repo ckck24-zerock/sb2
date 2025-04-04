@@ -18,7 +18,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
     //pno, pname, price, imgName
     @Query("select p.pno, p.pname, p.price " +
-            "from ProductEntity p ")
+            "from ProductEntity p left join p.images pi WHERE pi.ord = 0 ")
     Page<Object[]> list1(Pageable pageable);
 
 
