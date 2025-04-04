@@ -36,6 +36,8 @@ public class ProductEntity {
         ProductImage image = new ProductImage();
         image.setImgName(fileName);
         image.setOrd(images.size());
+
+        images.add(image);
     }
 
     public void clearImages() {
