@@ -47,6 +47,8 @@ public class ProductSearchImpl implements ProductSearch {
         query.offset(pageRequestDTO.getOffset());
         query.orderBy(new OrderSpecifier<>(Order.DESC, qProductEntity.pno));
 
+
+
         JPQLQuery<ProductListDTO> dtoQuery = query.select(Projections.bean(
                 ProductListDTO.class,
                 qProductEntity.pno,

@@ -121,16 +121,16 @@ public class ProductRepoTests {
 
     }
 
-    @Test
-    public void testList2() {
-
-        Pageable pageable = PageRequest.of(0, 10, Sort.by("pno").descending());
-
-        Page<ProductListDTO> result = repo.list1DTO(pageable);
-
-        result.forEach(dto -> log.info(dto));
-
-    }
+//    @Test
+//    public void testList2() {
+//
+//        Pageable pageable = PageRequest.of(0, 10, Sort.by("pno").descending());
+//
+//        Page<ProductListDTO> result = repo.list1DTO(pageable);
+//
+//        result.forEach(dto -> log.info(dto));
+//
+//    }
 
     @Test
     public void testListQuerydsl() {
