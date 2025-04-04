@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.zerock.sb2.board.dto.PageRequestDTO;
+import org.zerock.sb2.product.dto.ProductListDTO;
 import org.zerock.sb2.product.dto.ProductReadDTO;
 import org.zerock.sb2.product.entities.ProductEntity;
 
@@ -24,7 +25,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     @Query("select " +
             " new org.zerock.sb2.product.dto.ProductListDTO ( p.pno, p.pname, p.price, pi.imgName) " +
             "from ProductEntity p left join p.images pi WHERE pi.ord = 0 ")
-    Page<Object[]> list1DTO(Pageable pageable);
+    Page<ProductListDTO> list1DTO(Pageable pageable);
 
 
 }

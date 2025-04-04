@@ -16,7 +16,6 @@ public class ProductListDTO {
         this.pname = pname;
         this.price = price;
         this.imgName = imgName;
-
     }
 
 }
