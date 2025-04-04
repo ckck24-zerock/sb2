@@ -40,6 +40,9 @@ public class ProductSearchImpl implements ProductSearch {
 
         //검색 조건
 
+        //상품 단위로 처리
+        query.groupBy(qProductEntity);
+
         query.limit(pageRequestDTO.getSize());
         query.offset(pageRequestDTO.getOffset());
         query.orderBy(new OrderSpecifier<>(Order.DESC, qProductEntity.pno));
@@ -49,7 +52,9 @@ public class ProductSearchImpl implements ProductSearch {
                 qProductEntity.pno,
                 qProductEntity.pname,
                 qProductEntity.price,
-                qProductImage.imgName.as("imgName")
+                qProductImage.imgName.as("imgName"),
+                qProductReview.score.coalesce(0).avg().as("avgRating"),
+                qProductReview.count().as("reviewCnt")
                 ));
 
         List<ProductListDTO> dtoList = dtoQuery.fetch();
