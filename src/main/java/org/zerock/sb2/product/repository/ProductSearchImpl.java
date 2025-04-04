@@ -13,6 +13,7 @@ import org.zerock.sb2.product.dto.ProductListDTO;
 import org.zerock.sb2.product.entities.ProductEntity;
 import org.zerock.sb2.product.entities.QProductEntity;
 import org.zerock.sb2.product.entities.QProductImage;
+import org.zerock.sb2.product.entities.QProductReview;
 
 import java.util.List;
 
@@ -27,11 +28,13 @@ public class ProductSearchImpl implements ProductSearch {
 
         QProductEntity qProductEntity = QProductEntity.productEntity;
         QProductImage qProductImage = QProductImage.productImage;
+        QProductReview qProductReview = QProductReview.productReview;
 
         JPQLQuery<ProductEntity> query = queryFactory.selectFrom(qProductEntity);
 
         //join 하는 방법이 엔티티와 다르므로 주의
         query.leftJoin(qProductEntity.images, qProductImage);
+        query.leftJoin(qProductReview).on(qProductReview.product.eq(qProductEntity));
 
         query.where(qProductImage.ord.eq(0));
 
