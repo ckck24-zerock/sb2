@@ -45,6 +45,16 @@ public class ProductRepoTests {
         //tbl_product_img 테이블은 처리되지 않는다.
         log.info(product);
     }
+
+    @Test
+    public void testRead2() {
+
+        ProductEntity product = repo.selectOne(1L);
+
+        //tbl_product_img 테이블은 처리되지 않는다.
+        log.info(product);
+        log.info(product.getImages());
+    }
 }
 
 
