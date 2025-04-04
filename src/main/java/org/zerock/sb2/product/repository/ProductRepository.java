@@ -11,7 +11,7 @@ import org.zerock.sb2.product.dto.ProductListDTO;
 import org.zerock.sb2.product.dto.ProductReadDTO;
 import org.zerock.sb2.product.entities.ProductEntity;
 
-public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
+public interface ProductRepository extends JpaRepository<ProductEntity, Long>, ProductSearch {
 
     @EntityGraph(attributePaths = "images", type = EntityGraph.EntityGraphType.FETCH)
     @Query("select p from ProductEntity p where p.pno = :pno ")
