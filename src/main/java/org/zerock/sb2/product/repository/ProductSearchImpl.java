@@ -2,6 +2,7 @@ package org.zerock.sb2.product.repository;
 
 import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.JPQLQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,14 @@ public class ProductSearchImpl implements ProductSearch {
         query.limit(pageRequestDTO.getSize());
         query.offset(pageRequestDTO.getOffset());
         query.orderBy(new OrderSpecifier<>(Order.DESC, qProductEntity.pno));
+
+        query.select(Projections.bean(
+                ProductListDTO.class,
+                qProductEntity.pno,
+                qProductEntity.pname,
+                qProductEntity.price,
+                qProductImage.imgName.as("imgName")
+                ));
 
         return null;
     }
