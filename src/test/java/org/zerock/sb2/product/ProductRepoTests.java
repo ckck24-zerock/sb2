@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.zerock.sb2.product.dto.ProductReadDTO;
 import org.zerock.sb2.product.entities.ProductEntity;
 import org.zerock.sb2.product.repository.ProductRepository;
 
@@ -54,6 +55,17 @@ public class ProductRepoTests {
         //tbl_product_img 테이블은 처리되지 않는다.
         log.info(product);
         log.info(product.getImages());
+    }
+
+    @Test
+    public void testRead3() {
+
+        //ElementCollection이 여러 개인 경우 한 개의 객체로 변환하는데 어려움이 있다.
+        //Java 코드를 이용해서 변환해야만 한다.
+        ProductEntity product = repo.selectOne(1L);
+        ProductReadDTO dto = new ProductReadDTO(product);
+
+        log.info(dto);
     }
 }
 
