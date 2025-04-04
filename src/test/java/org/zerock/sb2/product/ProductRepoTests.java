@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.transaction.annotation.Transactional;
 import org.zerock.sb2.board.dto.PageRequestDTO;
 import org.zerock.sb2.board.dto.PageResponseDTO;
 import org.zerock.sb2.product.dto.ProductListDTO;
@@ -18,6 +19,7 @@ import org.zerock.sb2.product.entities.ProductReview;
 import org.zerock.sb2.product.repository.ProductRepository;
 import org.zerock.sb2.product.repository.ProductReviewRepository;
 
+import java.beans.Transient;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -142,6 +144,21 @@ public class ProductRepoTests {
         log.info(result);
     }
 
+    @Transactional
+    @Test
+    public void testZ1() {
+
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("pno").descending());
+
+        Page<ProductEntity> result = repo.findAll(pageable);
+
+        result.forEach(product -> {
+          log.info("--------------------");
+          log.info(product);
+          log.info(product.getImages());
+        } );
+
+    }
 
 }
 

@@ -28,4 +28,5 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long>, P
 //    Page<ProductListDTO> list1DTO(Pageable pageable);
 
 
+
 }
