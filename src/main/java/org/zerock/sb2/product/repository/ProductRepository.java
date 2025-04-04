@@ -17,7 +17,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     ProductEntity selectOne(@Param("pno") Long pno);
 
     //pno, pname, price, imgName
-    @Query("select p.pno, p.pname, p.price " +
+    @Query("select p.pno, p.pname, p.price, pi.imgName " +
             "from ProductEntity p left join p.images pi WHERE pi.ord = 0 ")
     Page<Object[]> list1(Pageable pageable);
 
