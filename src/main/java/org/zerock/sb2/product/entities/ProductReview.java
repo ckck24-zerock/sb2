@@ -1,13 +1,15 @@
 package org.zerock.sb2.product.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @Table(name = "tbl_product_review")
 @Getter
 @ToString(exclude = "product")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductReview {
 
     @Id
