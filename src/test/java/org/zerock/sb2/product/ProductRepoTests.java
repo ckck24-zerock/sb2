@@ -2,12 +2,15 @@ package org.zerock.sb2.product;
 
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.zerock.sb2.board.dto.PageRequestDTO;
+import org.zerock.sb2.board.dto.PageResponseDTO;
 import org.zerock.sb2.product.dto.ProductListDTO;
 import org.zerock.sb2.product.dto.ProductReadDTO;
 import org.zerock.sb2.product.entities.ProductEntity;
@@ -96,6 +99,30 @@ public class ProductRepoTests {
 
     }
 
+    @Test
+    public void testListQuerydsl() {
+
+        PageRequestDTO requestDTO = new PageRequestDTO();
+
+        PageResponseDTO<ProductListDTO> result = repo.listQuerydsl(requestDTO);
+
+        log.info(result);
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
