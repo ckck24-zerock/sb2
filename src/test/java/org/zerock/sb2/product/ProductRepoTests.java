@@ -12,6 +12,7 @@ import org.zerock.sb2.product.dto.ProductReadDTO;
 import org.zerock.sb2.product.entities.ProductEntity;
 import org.zerock.sb2.product.repository.ProductRepository;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 @SpringBootTest
@@ -78,6 +79,8 @@ public class ProductRepoTests {
         Pageable pageable = PageRequest.of(0, 10, Sort.by("pno").descending());
 
         Page<Object[]> result = repo.list1(pageable);
+
+        result.forEach(arr -> log.info(Arrays.toString(arr)));
 
     }
 }
