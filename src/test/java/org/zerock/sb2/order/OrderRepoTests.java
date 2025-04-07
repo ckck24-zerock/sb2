@@ -56,6 +56,39 @@ public class OrderRepoTests {
 
     }
 
+    @Test
+    public void testInsertDummies(){
+
+        for (int i = 0; i < 13 ; i++) {
+
+            ProductEntity p1 = ProductEntity.builder().pno(1L).build();
+            ProductEntity p2 = ProductEntity.builder().pno(2L).build();
+            ProductEntity p3 = ProductEntity.builder().pno(3L).build();
+
+            OrderEntity order = OrderEntity.builder()
+                    .customer("user01")
+                    .build();
+
+            OrderDetailEntity od1 = OrderDetailEntity.builder()
+                    .product(p1).quantity(1).build();
+
+            OrderDetailEntity od2 = OrderDetailEntity.builder()
+                    .product(p2).quantity(2).build();
+
+            OrderDetailEntity od3 = OrderDetailEntity.builder()
+                    .product(p3).quantity(3).build();
+
+            order.addDetail(od1);
+            order.addDetail(od2);
+            order.addDetail(od3);
+
+            repo.save(order);
+
+
+        }//end for
+
+
+    }
 
 
 }
