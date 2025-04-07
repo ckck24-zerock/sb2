@@ -160,6 +160,16 @@ public class ProductRepoTests {
 
     }
 
+    @Transactional
+    @Test
+    public void testAll() {
+
+        PageRequestDTO requestDTO = new PageRequestDTO();
+
+        repo.listAllQuerydsl(requestDTO);
+
+    }
+
 }
 
 
