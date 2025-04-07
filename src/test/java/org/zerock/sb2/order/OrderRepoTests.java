@@ -4,6 +4,10 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.sb2.order.entities.OrderDetailEntity;
 import org.zerock.sb2.order.entities.OrderEntity;
@@ -90,5 +94,29 @@ public class OrderRepoTests {
 
     }
 
+    @Transactional
+    @Test
+    public void testOfCustomer(){
+
+        String customer = "user01";
+
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("ono").descending());
+
+        Page<OrderEntity> page = repo.listOfUser(customer, pageable);
+
+        log.info(page);
+
+        page.get().forEach(orderEntity -> {
+            log.info(orderEntity);
+            log.info(orderEntity.getDetails());
+
+            orderEntity.getDetails().forEach(orderDetailEntity -> {
+                log.info(orderDetailEntity.getProduct());
+                log.info("----");
+            });
+
+            log.info("-------------------");
+        });
+    }
 
 }
