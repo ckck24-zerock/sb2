@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.sb2.board.dto.PageRequestDTO;
 import org.zerock.sb2.board.dto.PageResponseDTO;
+import org.zerock.sb2.product.dto.ProductListAllDTO;
 import org.zerock.sb2.product.dto.ProductListDTO;
 import org.zerock.sb2.product.dto.ProductReadDTO;
 import org.zerock.sb2.product.entities.ProductEntity;
@@ -166,7 +167,13 @@ public class ProductRepoTests {
 
         PageRequestDTO requestDTO = new PageRequestDTO();
 
-        repo.listAllQuerydsl(requestDTO);
+        PageResponseDTO<ProductListAllDTO> result = repo.listAllQuerydsl(requestDTO);
+
+
+        result.getDtoList().forEach(dto -> {
+            log.info(dto);
+        });
+
 
     }
 
