@@ -87,13 +87,21 @@ public class ProductSearchImpl implements ProductSearch {
 
         //Tuple = ( title, content, writer)
         JPQLQuery<Tuple> tupleQuery = query.select(
-                qProductEntity.pno,
-                qProductEntity.pname,
-                qProductEntity.price,
+                qProductEntity,
                 qProductReview.score.coalesce(0).avg().as("avgRating"),
-                qProductReview.count().as("reviewCnt"));
+                qProductReview.countDistinct().as("reviewCnt"));
 
-        tupleQuery.fetch();
+        List<Tuple> tupleList = tupleQuery.fetch();
+
+        tupleList.forEach(tuple -> {
+
+            ProductEntity product = tuple.get(0, ProductEntity.class);
+            log.info(product);
+            log.info(product.getImages());
+
+            log.info("----------------------");
+
+        });
 
 
         return null;
