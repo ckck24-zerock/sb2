@@ -20,7 +20,7 @@ public class OrderDetailEntity {
     @ManyToOne
     private ProductEntity product;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private OrderEntity order;
 
 }
