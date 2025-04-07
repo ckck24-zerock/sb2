@@ -148,6 +148,8 @@ public class OrderRepoTests {
             log.info(detailEntity);
             log.info("ORDER: " +detailEntity.getOrder());
             log.info("PRODUCT: " +detailEntity.getProduct());
+            log.info("PRODUCT: " +detailEntity.getProduct().getImages().get(0));
+
             log.info("-----------------");
 
         });
