@@ -34,7 +34,8 @@ public class ProductServiceTests {
     @Test
     public void testReadProduct() {
 
-
+        ProductReadDTO dto = service.read(33L);
+        log.info(dto);
     }
 
 }

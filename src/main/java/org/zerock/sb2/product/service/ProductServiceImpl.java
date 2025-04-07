@@ -33,7 +33,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductReadDTO read(Long pno) {
 
-        return repository.selectDTO(pno);
+        return new ProductReadDTO(repository.selectOne(pno));
     }
 
     @Transactional(readOnly = true)
