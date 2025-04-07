@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 import org.zerock.sb2.order.entities.OrderDetailEntity;
 import org.zerock.sb2.order.entities.OrderEntity;
 import org.zerock.sb2.order.repository.OrderEntityRepository;
@@ -41,6 +42,17 @@ public class OrderRepoTests {
         order.addDetail(od3);
 
         repo.save(order);
+
+    }
+
+    @Transactional
+    @Test
+    public void testSelectOne(){
+
+        OrderEntity order = repo.selectOne(1L);
+
+        log.info(order);
+        log.info(order.getDetails());
 
     }
 
