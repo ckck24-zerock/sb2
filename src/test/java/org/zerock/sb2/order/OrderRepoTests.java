@@ -16,6 +16,7 @@ import org.zerock.sb2.order.repository.OrderDetailEntityRepository;
 import org.zerock.sb2.order.repository.OrderEntityRepository;
 import org.zerock.sb2.product.entities.ProductEntity;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -149,6 +150,33 @@ public class OrderRepoTests {
             log.info("ORDER: " +detailEntity.getOrder());
             log.info("PRODUCT: " +detailEntity.getProduct());
             log.info("PRODUCT: " +detailEntity.getProduct().getImages().get(0));
+
+            log.info("-----------------");
+
+        });
+
+    }
+
+
+    @Transactional
+    @Test
+    public void testOfOrderAll2(){
+
+        String customer = "user01";
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("ono").descending());
+
+        Page<OrderEntity> page = repo.listOfUserOrder(customer, pageable);
+        //15,14,13,12,11,....5
+        java.util.List<Long> onos = page.stream().map(orderEntity -> orderEntity.getOno()).collect(Collectors.toUnmodifiableList());
+
+        List<Object[]> detailList = detailRepo.listOfOnos2(onos);
+
+        log.info("======================================");
+        log.info(detailList); //사용자가 주문한 주문 상세의 번호들
+
+        detailList.forEach(arr -> {
+
+            log.info(Arrays.toString(arr));
 
             log.info("-----------------");
 
