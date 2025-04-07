@@ -14,7 +14,8 @@ public interface OrderEntityRepository extends JpaRepository<OrderEntity, Long> 
     @Query("SELECT oe FROM OrderEntity oe WHERE oe.ono = :ono")
     OrderEntity selectOne( @Param("ono") Long ono);
 
-    //@EntityGraph(attributePaths = {"details.product"}, type = EntityGraph.EntityGraphType.FETCH)
+    //결과는 정상적으로 나오지만 페이징 처리가 없으므로 위험하다
+    @EntityGraph(attributePaths = {"details.product"}, type = EntityGraph.EntityGraphType.FETCH)
     @Query("SELECT oe FROM OrderEntity oe WHERE oe.customer = :customer")
     Page<OrderEntity> listOfUser(@Param("customer")String customer, Pageable pageable);
 }
