@@ -23,4 +23,8 @@ public class OrderDetailEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private OrderEntity order;
 
+    public void setOrderEntity(OrderEntity order) {
+        this.order = order;
+    }
+
 }
