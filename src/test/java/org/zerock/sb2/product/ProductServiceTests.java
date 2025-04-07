@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.zerock.sb2.product.dto.ProductAddDTO;
+import org.zerock.sb2.product.dto.ProductReadDTO;
 import org.zerock.sb2.product.service.ProductService;
 
 import java.util.List;
@@ -27,6 +28,13 @@ public class ProductServiceTests {
         Long pno = service.add(dto);
 
         log.info(pno);
+    }
+
+
+    @Test
+    public void testReadProduct() {
+
+
     }
 
 }
