@@ -167,6 +167,22 @@ public class OrderRepoTests {
             OrderEntity orderEntity = detailEntity.getOrder();
             orderEntity.removeDetail(detailEntity);
         }
+    }
+
+    @Transactional
+    @Commit
+    @Test
+    public void testUpdateDetail(){
+        Long odno = 41L;
+
+        OrderDetailEntity detailEntity = detailRepo.findById(odno).orElse(null);
+
+        if(detailEntity != null){
+
+            detailEntity.changeQuantity(5);
+            OrderEntity orderEntity = detailEntity.getOrder();
+            orderEntity.updateDetail(detailEntity);
+        }
 
     }
 
