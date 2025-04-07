@@ -8,6 +8,7 @@ import org.zerock.sb2.board.dto.PageRequestDTO;
 import org.zerock.sb2.board.dto.PageResponseDTO;
 import org.zerock.sb2.product.dto.ProductAddDTO;
 import org.zerock.sb2.product.dto.ProductListAllDTO;
+import org.zerock.sb2.product.entities.ProductEntity;
 import org.zerock.sb2.product.repository.ProductRepository;
 
 @Transactional
@@ -21,13 +22,18 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Long add(ProductAddDTO dto) {
 
+        ProductEntity productEntity = addDTOToEntity(dto);
 
-        return 0L;
+        repository.save(productEntity);
+
+        return productEntity.getPno();
     }
 
     @Transactional(readOnly = true)
     @Override
     public PageResponseDTO<ProductListAllDTO> listProducts(PageRequestDTO pageRequestDTO) {
+
         return repository.listAllQuerydsl(pageRequestDTO);
+
     }
 }
