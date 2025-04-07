@@ -30,7 +30,7 @@ public class ProductEntity {
     @CollectionTable(
             name = "tbl_product_img",
             joinColumns = @JoinColumn(name="product_pno"))
-    @BatchSize(size = 10)
+    @BatchSize(size = 100)
     @Builder.Default
     private List<ProductImage> images = new ArrayList<>();
 

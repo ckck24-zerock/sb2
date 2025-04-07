@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.zerock.sb2.board.dto.PageRequestDTO;
 import org.zerock.sb2.board.dto.PageResponseDTO;
+import org.zerock.sb2.product.dto.ProductListAllDTO;
 import org.zerock.sb2.product.dto.ProductListDTO;
 import org.zerock.sb2.product.entities.ProductEntity;
 import org.zerock.sb2.product.entities.QProductEntity;
@@ -65,6 +66,11 @@ public class ProductSearchImpl implements ProductSearch {
                 .total((int) total)
                 .pageRequestDTO(pageRequestDTO)
                 .build();
+    }
+
+    @Override
+    public PageResponseDTO<ProductListAllDTO> listAllQuerydsl(PageRequestDTO pageRequestDTO) {
+        return null;
     }
 }
 
